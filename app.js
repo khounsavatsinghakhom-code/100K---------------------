@@ -6,6 +6,9 @@ window.onload = function() {
     renderServices();
 };
 
+// ⚠️ ປ່ຽນເບີ WhatsApp ຂອງເຈົ້າຢູ່ກົງນີ້ໄດ້ເລີຍເຈົ້າ (ໃສ່ 85620 ນຳໜ້າ)
+const MY_WHATSAPP_NUMBER = "8562076689978"; 
+
 function renderServices() {
     let gridHtml = '';
     let selectHtml = '';
@@ -14,11 +17,11 @@ function renderServices() {
     const ALL_MODULES = [AIR_SERVICES, ELECTRIC_SERVICES, PLUMBING_SERVICES];
     
     ALL_MODULES.forEach(category => {
-        let title = category.title_lo; // ດຶງພາສາລາວ
+        let title = category.title_lo;
         gridHtml += `<div class="card"><h3>${title}</h3><div class="price-list">`;
         
         category.items.forEach(item => {
-            let name = item.name; // ດຶງຊື່ບໍລິການພາສາລາວ
+            let name = item.name;
             
             gridHtml += `
                 <div class="service-item-row">
@@ -26,7 +29,7 @@ function renderServices() {
                         <span class="item-name">${name}</span>
                         <span class="item-price">${item.price.toLocaleString()} ກີບ</span>
                     </div>
-                    <button class="btn-order-item" onclick="directOrder('${name}')">📞 ທັກຫາຊ่าง</button>
+                    <button class="btn-order-item" onclick="directOrder('${name}')">📞 ທັກຫາຊ່າງ</button>
                 </div>`;
                 
             selectHtml += `<option value="${name}">${name}</option>`;
@@ -44,9 +47,8 @@ function renderServices() {
 }
 
 function directOrder(serviceName) {
-    const whatsappNumber = "8562095551928";
     const text = `ສະບາຍດີ 100K ຊ່າງປະຈຳບ້ານ, ຂ້ອຍສົນໃຈບໍລິການ:\n👉 ${serviceName}\n\nກະລຸນາແນະນຳຄິວຊ່າງໃຫ້ແດ່ເດີ້.`;
-    window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
 }
 
 function calculateTotal() {
@@ -99,7 +101,7 @@ function sendBooking() {
     const time = document.getElementById('book-time').value;
     if(!date) { alert('ກະລຸນາເລືອກວັນທີ!'); return; }
     const text = `📅 ຂໍ້ຄວາມແຈ້ງຈອງຄິວຊ່າງລ່ວງໜ້າ:\n🛠 ບໍລິການ: ${service}\n📆 ວັນທີ: ${date}\n⏰ ຊ່ວງເວລາ: ${time}`;
-    window.open(`https://wa.me/8562095551928?text=${encodeURIComponent(text)}`, '_blank');
+    window.open(`https://wa.me/${MY_WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
 }
 
 function downloadReceiptImage() {
