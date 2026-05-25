@@ -47,7 +47,6 @@ function switchLang(lang) {
     currentLang = lang;
     document.documentElement.lang = lang;
     
-    // ອັບເດດຂໍ້ຄວາມທຸກຈຸດທີ່ມີ ID
     Object.keys(TRANSLATIONS[lang]).forEach(id => {
         const element = document.getElementById(id);
         if (element) {
@@ -55,7 +54,6 @@ function switchLang(lang) {
         }
     });
     
-    // ລັນຟັງຊັນໂຫຼດລາຍການບໍລິການໃໝ່ໃຫ້ເປັນພາສານັ້ນໆ
     if (typeof renderServices === "function") {
         renderServices();
     }

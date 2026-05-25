@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>100K ຊ່າງປະຈຳບ້ານ - ສູນລວມຊ่างມືອາຊີບ ວຽງຈັນ</title>
+    <title>100K ຊ່າງປະຈຳບ້ານ - ສູນລວມຊ່າງມືອາຊີບ ວຽງຈັນ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
 </head>
 <body>
     <header>
-        <div class="logo">100K <span>ຊ່າງປະຈຳບ້ານ</span></div>
+        <div class="logo">100K <span>ช่างປະຈຳບ້ານ</span></div>
         <div style="display: flex; align-items: center; gap: 15px;">
             <div style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 20px; font-size: 13px;">
                 <span onclick="switchLang('lo')" style="cursor:pointer; font-weight:bold; margin-right:5px;">🇱🇦 LA</span> | 
@@ -33,7 +33,7 @@
             <div style="background: rgba(255, 90, 0, 0.1); color: var(--accent-orange); display: inline-block; padding: 6px 16px; border-radius: 20px; margin-bottom: 25px; font-size: 13px; font-weight: 500;">📍 ໃຫ້ບໍລິການທົ່ວນະຄອນຫຼວງວຽງຈັນ</div>
             <h1 id="hero-title">ສູນລວມຊ່າງມືອາຊີບ<br>ໃກ້ບ້ານທ່ານ</h1>
             <p id="hero-sub">ເອີ້ນຊ່າງກວດເຊັກທຸກອາການ ເລີ່ມຕົ້ນພຽງ 100,000 ກີບ! ໂປ່ງໃສ ບໍ່ຟັນລາຄາ ໝັ້ນໃຈໄດ້ 100%</p>
-            <div class="btn-container" style="justify-content: flex-start;">
+            <div class="btn-container">
                 <a href="#booking" id="btn-book-nav" class="btn-orange">📅 ເລືອກເວລານັດໝາຍ</a>
                 <button onclick="checkStaffLogin()" id="btn-receipt-nav" class="btn-outline">🧾 ໃບສະຫຼຸບງານຊ່າງ</button>
             </div>
@@ -66,7 +66,7 @@
         </div>
     </section>
 
-    <div id="staff-only-section">
+    <div id="staff-only-section" style="display:none;">
         <section id="receipt" class="receipt-section" style="text-align: center;">
             <div style="background: #00CB44; color: white; display: inline-block; padding: 4px 15px; border-radius: 20px; font-size: 12px; margin-bottom: 15px; font-weight: 500;">🔒 Staff Mode</div>
             <h2>🧾 ໃບສະຫຼຸບງານ ແລະ ອອກໃບເຊັດໃຫ້ລູກຄ້າ</h2>
@@ -83,7 +83,7 @@
             <div id="receipt-capture-zone" style="max-width: 450px; margin: 0 auto; padding: 10px;">
                 <div class="receipt-box" id="my-receipt-box">
                     <div style="text-align: center; border-bottom: 2px dashed #bbbbbb; padding-bottom: 12px; margin-bottom: 15px;">
-                        <h3 style="font-size: 23px; font-weight: 700; color: #0B132B;">100K ຊ່າງປະຈຳບ້ານ</h3>
+                        <h3 style="font-size: 23px; font-weight: 700; color: #0B132B; margin:0;">100K ຊ່າງປະຈຳບ້ານ</h3>
                         <div style="font-size: 12px; color: #555;">Vientiane, Laos</div>
                         <div style="background: #0B132B; color: white; display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 11px; margin-top: 10px; font-weight: 500;">RECEIPT & WARRANTY / ໃບຮັບເງິນ</div>
                     </div>
@@ -95,7 +95,7 @@
                     <div id="receipt-items"></div>
                     <div class="receipt-total"><span>Total / ລວມ:</span><span id="total-price-display">0 ກີບ</span></div>
                     <div style="margin-top: 18px; font-size: 11px; color: #6d4c41; background: #fffde7; padding: 10px; border-radius: 6px; border: 1px solid #fff59d;">🛡️ <strong>Warranty / ການຮັບປະກັນ:</strong> 15 Days Satisfaction Warranty / ຮັບປະກັນ 15 ວັນ.</div>
-                    <div class="qr-container"><div style="font-weight: 500; font-size: 13px; color: #333; margin-bottom: 6px;">📱 Scan to Pay via BCEL One</div><img class="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=100K_HOME_CHANG_VIENTIANE" alt="BCEL QR"></div>
+                    <div class="qr-container" style="text-align:center; margin-top:15px;"><div style="font-weight: 500; font-size: 13px; color: #333; margin-bottom: 6px;">📱 Scan to Pay via BCEL One</div><img class="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=100K_HOME_CHANG_VIENTIANE" alt="BCEL QR" style="width:150px; height:150px;"></div>
                 </div>
             </div>
             <div style="max-width: 450px; margin: 0 auto; padding: 0 10px;"><button onclick="downloadReceiptImage()" class="btn-blue">📸 Download Receipt Image</button></div>
@@ -104,7 +104,7 @@
     <section class="terms-section">
         <h2 id="terms-title">⚠️ ເງື່ອນໄຂການຮັບປະກັນ</h2>
         <ul>
-            <li id="terms-1">ງານບໍລິการ ແລະ ງານຕິດຕັ້ງທຸກປະເພດ ມີການຮັບປະກັນລະບົບຫຼັງການຊ່ວຍເຫຼືອ 15 ວັນ.</li>
+            <li id="terms-1">ງານບໍລິການ ແລະ ງານຕິດຕັ້ງທຸກປະເພດ ມີການຮັບປະກັນລະບົບຫຼັງການຊ່ວຍເຫຼືອ 15 ວັນ.</li>
             <li id="terms-2">ຫາກລູກຄ້າຕັດສິນໃຈບໍ່ແປງຫຼັງຈາກຊ່າງແຈ້ງອາການ, ລູກຄ້າຈະຈ່າຍພຽງຄ່າກວດເຊັກພື້ນຖານ 100,000 ກີບ.</li>
         </ul>
     </section>

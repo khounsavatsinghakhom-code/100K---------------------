@@ -1,11 +1,8 @@
-// app.js - ລະບົບຄິດໄລ່ເງິນ ແລະ ອອກໃບບິນແບບແຍກໂມດູນ
 window.onload = function() {
-    // ຕັ້ງຄ່າວັນທີປະຈຸບັນໃນຟອມ
     const today = new Date().toISOString().split('T')[0];
     if(document.getElementById('book-date')) {
         document.getElementById('book-date').value = today;
     }
-    // ໂຫຼດລາຍການບໍລິການຂຶ້ນໜ້າເວັບ
     renderServices();
 };
 
@@ -14,19 +11,17 @@ function renderServices() {
     let selectHtml = '';
     let checkboxHtml = '';
     
-    // ລວມ 3 ໂມດູນງານທີ່ແຍກກັນ
+    // ດຶງຂໍ້ມູນມາຈາກ 3 ໄຟລ໌ໃນໂຟນເດີ data
     const ALL_MODULES = [AIR_SERVICES, ELECTRIC_SERVICES, PLUMBING_SERVICES];
     
     ALL_MODULES.forEach(category => {
         let title = (currentLang === "lo") ? category.title_lo : category.title_en;
-        
         gridHtml += `<div class="card"><h3>${title}</h3><div class="price-list">`;
         
         category.items.forEach(item => {
             let name = (currentLang === "lo") ? item.name : item.en_name;
             let btnText = (currentLang === "lo") ? "📞 ທັກຫາຊ່າງ" : "📞 Contact";
             
-            // ໂຊກ່ອງບໍລິການມີປຸ່ມກົດແບບ Fastwork
             gridHtml += `
                 <div class="service-item-row">
                     <div class="item-info">
@@ -50,9 +45,8 @@ function renderServices() {
     calculateTotal();
 }
 
-// ກົດປຸ່ມແລ້ວເດັ້ງເຂົ້າ WhatsApp ພ້ອມຂໍ້ຄວາມອັດຕະໂນມັດ
 function directOrder(serviceName) {
-    const whatsappNumber = "8562095551928"; // ⚠️ ສາມາດປ່ຽນເປັນເບີ WhatsApp ຂອງເຈົ້າໄດ້
+    const whatsappNumber = "8562095551928";
     const text = `ສະບາຍດີ 100K ຊ່າງປະຈຳບ້ານ, ຂ້ອຍສົນໃຈບໍລິການ:\n👉 ${serviceName}\n\nກະລຸນາແນະນຳຄິວຊ່າງໃຫ້ແດ່ເດີ້.`;
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
 }
@@ -68,7 +62,7 @@ function calculateTotal() {
     });
     
     const spareCost = parseInt(document.getElementById('spare-cost').value) || 0;
-    const spareDetail = document.getElementById('spare-detail').value || 'ອະໄຫຼ່ເພີ່ມເຕີມ';
+    const spareDetail = document.getElementById('spare-detail').value || 'ຄ່າອະໄຫຼ່ເພີ່ມເຕີມ';
     
     if(spareCost > 0) {
         itemsHtml += `<div class="receipt-row" style="color:#d32f2f;"><span>⚙️ ${spareDetail}</span><span>${spareCost.toLocaleString()} ກີບ</span></div>`;
@@ -105,9 +99,7 @@ function sendBooking() {
     const service = document.getElementById('book-service').value;
     const date = document.getElementById('book-date').value;
     const time = document.getElementById('book-time').value;
-    
     if(!date) { alert('ກະລຸນາເລືອກວັນທີ!'); return; }
-    
     const text = `📅 ຂໍ້ຄວາມແຈ້ງຈອງຄິວຊ່າງລ່ວງໜ້າ:\n🛠 ບໍລິການ: ${service}\n📆 ວັນທີ: ${date}\n⏰ ຊ່ວງເວລາ: ${time}`;
     window.open(`https://wa.me/8562095551928?text=${encodeURIComponent(text)}`, '_blank');
 }

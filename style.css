@@ -1,11 +1,9 @@
-/* style.css - ໂຄ້ດຕົບແຕ່ງເວີຊັນສົມບູນ ໂປ່ງໃສ ຫຼູຫຼາ */
 :root {
     --primary-bg: #0A0F1D;
     --card-bg: #141B2D;
     --accent-orange: #FF5A00;
     --text-main: #FFFFFF;
     --text-sub: #94A3B8;
-    --success-green: #00E676;
     --shadow-glow: rgba(255, 90, 0, 0.2);
 }
 
@@ -34,7 +32,6 @@ header {
 .logo { font-size: 24px; font-weight: 700; color: white; }
 .logo span { color: var(--accent-orange); }
 
-/* 📸 ຈັດ Hero Section ແບ່ງຊ້າຍ-ຂວາ */
 .hero { 
     display: flex;
     align-items: center;
@@ -44,28 +41,12 @@ header {
     gap: 40px;
 }
 
-.hero-text-container {
-    flex: 1.2;
-    text-align: left;
-}
-
+.hero-text-container { flex: 1.2; text-align: left; }
 .hero h1 { font-size: 3rem; font-weight: 700; line-height: 1.3; margin: 0 0 20px 0; color: white; }
 .hero p { font-size: 1.2rem; color: var(--text-sub); margin-bottom: 40px; font-weight: 300; }
 
-.hero-image-container {
-    flex: 0.8;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.hero-avatar {
-    max-width: 100%;
-    max-height: 420px;
-    object-fit: contain;
-    filter: drop-shadow(0 10px 25px rgba(255, 90, 0, 0.25));
-    border-radius: 12px;
-}
+.hero-image-container { flex: 0.8; display: flex; justify-content: center; align-items: center; }
+.hero-avatar { max-width: 100%; max-height: 420px; object-fit: contain; filter: drop-shadow(0 10px 25px rgba(255, 90, 0, 0.25)); border-radius: 12px; }
 
 .btn-container { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
 .btn-orange { background-color: var(--accent-orange); color: white; padding: 16px 35px; border: none; border-radius: 10px; font-weight: 500; font-size: 16px; cursor: pointer; text-decoration: none; display: inline-block; box-shadow: 0 4px 15px var(--shadow-glow); transition: 0.3s; font-family: 'Noto Sans Lao'; }
@@ -74,13 +55,12 @@ header {
 .btn-outline { border: 2px solid rgba(255,255,255,0.15); color: white; padding: 14px 33px; border-radius: 10px; font-weight: 500; font-size: 16px; text-decoration: none; transition: 0.3s; background: none; cursor: pointer; font-family: 'Noto Sans Lao'; }
 .btn-outline:hover { background: rgba(255,255,255,0.05); border-color: white; }
 
-/* 📦 ປັບແຕ່ງກ່ອງແພັກເກດ Fastwork */
 .services-container, .booking-section, .receipt-section, .terms-section { padding: 60px 8%; background-color: rgba(20, 27, 45, 0.4); margin: 40px 5%; border-radius: 20px; border: 1px solid rgba(255,255,255,0.02); }
 .services-container h2, .booking-section h2, .receipt-section h2 { font-size: 2.2rem; font-weight: 700; text-align: center; margin-bottom: 10px; }
 .section-subtitle { text-align: center; color: var(--text-sub); margin-bottom: 50px; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 40px; }
-.card { background-color: var(--card-bg); padding: 35px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.03); box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: 0.3s; }
+.card { background-color: var(--card-bg); padding: 35px; border-radius: 16px; border: 1px solid rgba(255,255,255,0.03); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
 .card h3 { color: var(--accent-orange); margin-top: 0; font-size: 1.3rem; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 10px; }
 
 .service-item-row { display: flex; justify-content: space-between; align-items: center; padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.05); gap: 10px; }
@@ -97,15 +77,16 @@ header {
 .form-group input, .form-group select { width: 100%; padding: 14px; border-radius: 10px; border: 1px solid rgba(255,255,255,0.1); background-color: var(--primary-bg); color: white; box-sizing: border-box; font-family: 'Noto Sans Lao'; font-size: 15px; }
 
 .receipt-section input[type="text"], .receipt-section input[type="number"] { background-color: #F8FAFC; color: #1E293B; border: 1px solid #CBD5E1; padding: 14px; width: 100%; border-radius: 10px; box-sizing: border-box; font-family: 'Noto Sans Lao'; }
+.receipt-section label { color: #1E293B; font-weight: 500; }
 .receipt-section input[type="checkbox"] { width: auto; margin-right: 12px; transform: scale(1.3); }
 
-.receipt-box { background-color: #FFFFFF; color: #1E293B; padding: 40px 35px; border-radius: 16px; max-width: 480px; margin: 40px auto 0; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
-.receipt-total { display: flex; justify-content: space-between; font-size: 22px; font-weight: 700; border-top: 2px dashed #94A3B8; padding-top: 20px; color: var(--accent-orange); }
+.receipt-box { background-color: #FFFFFF; color: #1E293B; padding: 40px 35px; border-radius: 16px; max-width: 480px; margin: 40px auto 0; box-shadow: 0 20px 40px rgba(0,0,0,0.4); text-align: left; }
+.receipt-row { display: flex; justify-content: space-between; margin-bottom: 10px; font-size: 14px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px; }
+.receipt-total { display: flex; justify-content: space-between; font-size: 22px; font-weight: 700; border-top: 2px dashed #94A3B8; padding-top: 20px; color: var(--accent-orange); margin-top: 15px; }
 .btn-blue { background-color: #0076FF; color: white; padding: 14px 25px; border: none; border-radius: 10px; font-weight: 500; font-family: 'Noto Sans Lao'; cursor: pointer; margin-top: 20px; width: 100%; font-size: 16px; }
 
 footer { text-align: center; padding: 50px; color: var(--text-sub); border-top: 1px solid rgba(255,255,255,0.05); }
 
-/* 📱 Responsive Mobile */
 @media (max-width: 768px) {
     .hero { flex-direction: column-reverse; text-align: center; padding: 60px 5% 30px; gap: 20px; }
     .hero-text-container { text-align: center; }
