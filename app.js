@@ -11,15 +11,14 @@ function renderServices() {
     let selectHtml = '';
     let checkboxHtml = '';
     
-    // ລວມຂໍ້ມູນຈາກ 3 ໄຟລ໌ໃນໂຟນເດີ data
     const ALL_MODULES = [AIR_SERVICES, ELECTRIC_SERVICES, PLUMBING_SERVICES];
     
     ALL_MODULES.forEach(category => {
-        let title = category.title_lo; // ດຶງພາສາລາວໂດຍກົງ
+        let title = category.title_lo; // ດຶງພາສາລາວ
         gridHtml += `<div class="card"><h3>${title}</h3><div class="price-list">`;
         
         category.items.forEach(item => {
-            let name = item.name; // ດຶງຊື່ພາສາລາວ
+            let name = item.name; // ດຶງຊື່ບໍລິການພາສາລາວ
             
             gridHtml += `
                 <div class="service-item-row">
@@ -27,7 +26,7 @@ function renderServices() {
                         <span class="item-name">${name}</span>
                         <span class="item-price">${item.price.toLocaleString()} ກີບ</span>
                     </div>
-                    <button class="btn-order-item" onclick="directOrder('${name}')">📞 ທັກຫາຊ່າງ</button>
+                    <button class="btn-order-item" onclick="directOrder('${name}')">📞 ທັກຫາຊ่าง</button>
                 </div>`;
                 
             selectHtml += `<option value="${name}">${name}</option>`;
@@ -98,7 +97,7 @@ function sendBooking() {
     const service = document.getElementById('book-service').value;
     const date = document.getElementById('book-date').value;
     const time = document.getElementById('book-time').value;
-    if(!date) { alert('กະລຸນາເລືອກວັນທີ!'); return; }
+    if(!date) { alert('ກະລຸນາເລືອກວັນທີ!'); return; }
     const text = `📅 ຂໍ້ຄວາມແຈ້ງຈອງຄິວຊ່າງລ່ວງໜ້າ:\n🛠 ບໍລິການ: ${service}\n📆 ວັນທີ: ${date}\n⏰ ຊ່ວງເວລາ: ${time}`;
     window.open(`https://wa.me/8562095551928?text=${encodeURIComponent(text)}`, '_blank');
 }
