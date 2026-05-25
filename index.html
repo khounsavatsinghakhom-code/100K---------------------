@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="lo">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>100K ຊ່າງປະຈຳບ້ານ - ສູນລວມຊ່າງມືອາຊີບ ວຽງຈັນ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="services.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+    <header>
+        <div class="logo">100K <span>ຊ່າງປະຈຳບ້ານ</span></div>
+        <button onclick="checkStaffLogin()" class="btn-orange">🧾 ອອກໃບເຊັດ (ສຳລັບຊ່າງ)</button>
+    </header>
+    <section class="hero">
+        <div style="background: rgba(255, 90, 0, 0.1); color: var(--accent-orange); display: inline-block; padding: 6px 16px; border-radius: 20px; margin-bottom: 25px; font-size: 13px; font-weight: 500;">📍 ໃຫ້ບໍລິການທົ່ວນະຄອນຫຼວງວຽງຈັນ</div>
+        <h1>ສູນລວມຊ່າງມືອາຊີບ<br>ໃກ້ບ້ານທ່ານ</h1>
+        <p>ເອີ້ນຊ່າງກວດເຊັກທຸກອາການ ເລີ່ມຕົ້ນພຽງ 100,000 ກີບ! ໂປ່ງໃສ ບໍ່ຟັນລາຄາ ໝັ້ນໃຈໄດ້ 100%</p>
+        <div class="btn-container">
+            <a href="#booking" class="btn-orange">📅 ເລືອກເວລານັດໝາຍ</a>
+            <button onclick="checkStaffLogin()" class="btn-outline">🧾 ໃບສະຫຼຸບງານຊ່າງ</button>
+        </div>
+    </section>
+    <section class="services-container">
+        <h2>🛠 ໝວດໝູ່ບໍລິການ ແລະ ຄ່າແຮງມາດຕະຖານ</h2>
+        <p class="section-subtitle">ລາຄາໂປ່ງໃສ ມາດຕະຖານດຽວກັນທົ່ວຮ້ານ</p>
+        <div class="grid" id="services-display-grid"></div>
+    </section>
+    <section id="booking" class="booking-section" style="text-align: center;">
+        <h2>📅 นັດໝາຍວັນ-ເວລາ ທີ່ທ່ານສະດວກ</h2>
+        <div style="max-width: 400px; margin: 0 auto;">
+            <div class="form-group"><label>ເລືອກບໍລິການ:</label><select id="book-service"></select></div>
+            <div class="form-group"><label>ເລືອກວັນທີ:</label><input type="date" id="book-date"></div>
+            <div class="form-group"><label>ເລືອກຊ່ວງເວລາ:</label><select id="book-time"><option value="ຕອນເຊົ້າ (09:00 - 12:00)">🌅 ຕອນເຊົ້າ</option><option value="ຕອນບ່າຍ (13:00 - 17:00)">☀️ ຕອນບ່າຍ</option></select></div>
+            <button onclick="sendBooking()" class="btn-orange" style="width: 100%;">✅ ຢືນຢັນການນັດໝາຍຊ່າງ</button>
+        </div>
+    </section>
+    <div id="staff-only-section">
+        <section id="receipt" class="receipt-section" style="text-align: center;">
+            <div style="background: #00CB44; color: white; display: inline-block; padding: 4px 15px; border-radius: 20px; font-size: 12px; margin-bottom: 15px; font-weight: 500;">🔒 ລະບົບພະນັກງານຊ່າງ (Staff Mode)</div>
+            <h2>🧾 ໃບສະຫຼຸບງານ ແລະ ອອກໃບເຊັດໃຫ້ລູກຄ້າ</h2>
+            <div style="max-width: 450px; margin: 0 auto; text-align: left; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
+                <h4 style="color: var(--accent-orange); margin-top: 0; font-weight: 500;">1. ຂໍ້ມູນລູກຄ້າ:</h4>
+                <div style="margin-bottom: 15px;"><label>ຊື່ລູກຄ້າ:</label><input type="text" id="cust-name" placeholder="ຊື່ລູກຄ້າ" oninput="updateReceiptData()"></div>
+                <div style="margin-bottom: 15px;"><label>ເບີໂທຕິດຕໍ່:</label><input type="text" id="cust-phone" placeholder="ເບີໂທ" oninput="updateReceiptData()"></div>
+                <h4 style="color: var(--accent-orange); margin-top: 25px; font-weight: 500;">2. ເລືອກລາຍການຄ່າແຮງຕົວຈິງ:</h4>
+                <div id="receipt-checkboxes-zone" style="max-height: 300px; overflow-y: auto; background: white; padding: 15px; border-radius: 10px;"></div>
+                <h4 style="color: var(--accent-orange); margin-top: 25px; font-weight: 500;">3. ຄ່າอະໄຫຼ່ເພີ່ມເຕີມ:</h4>
+                <div style="margin-bottom: 15px;"><label>ລະບຸຄ່າອະໄຫຼ່ (ກີບ):</label><input type="number" id="spare-cost" value="0" oninput="calculateTotal()"></div>
+                <div style="margin-bottom: 15px;"><label>ລາຍລະອຽດอະໄຫຼ່:</label><input type="text" id="spare-detail" placeholder="ເຊັ່ນ: ກັອກນ້ຳໃໝ່..." oninput="calculateTotal()"></div>
+            </div>
+            <div id="receipt-capture-zone" style="max-width: 450px; margin: 0 auto; padding: 10px;">
+                <div class="receipt-box" id="my-receipt-box">
+                    <div style="text-align: center; border-bottom: 2px dashed #bbbbbb; padding-bottom: 12px; margin-bottom: 15px;">
+                        <h3 style="font-size: 23px; font-weight: 700; color: #0B132B;">100K ຊ່າງປະຈຳບ້ານ</h3>
+                        <div style="font-size: 12px; color: #555;">ວຽງຈັນ, ສປປ ລາວ</div>
+                        <div style="background: #0B132B; color: white; display: inline-block; padding: 4px 12px; border-radius: 4px; font-size: 11px; margin-top: 10px; font-weight: 500;">ໃບຮັບເງິນ / ໃບຮັບປະກັນດິຈິຕອນ</div>
+                    </div>
+                    <div style="font-size: 13px; color: #333; background: #f5f6f8; padding: 12px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #FF5A00;">
+                        <div style="margin-bottom: 4px;"><strong>ລູກຄ້າ:</strong> <span id="rec-name">---------</span></div>
+                        <div style="margin-bottom: 4px;"><strong>ເບີໂທ:</strong> <span id="rec-phone">---------</span></div>
+                        <div><strong>ວັນທີ:</strong> <span id="rec-date">--/--/----</span></div>
+                    </div>
+                    <div id="receipt-items"></div>
+                    <div class="receipt-total"><span>ລວມທັງໝົດ:</span><span id="total-price-display">0 ກີບ</span></div>
+                    <div style="margin-top: 18px; font-size: 11px; color: #6d4c41; background: #fffde7; padding: 10px; border-radius: 6px; border: 1px solid #fff59d;">🛡️ <strong>ເງື່ອນໄຂການຮັບປະກັນ:</strong> ຮັບປະກັນລະບົບທີ່ສ້ອມແປງເປັນເວລາ 15 ວັນ.</div>
+                    <div class="qr-container"><div style="font-weight: 500; font-size: 13px; color: #333; margin-bottom: 6px;">📱 ສະແກນຊຳລະເງິນຜ່ານ BCEL One</div><img class="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=100K_HOME_CHANG_VIENTIANE" alt="BCEL QR"></div>
+                </div>
+            </div>
+            <div style="max-width: 450px; margin: 0 auto; padding: 0 10px;"><button onclick="downloadReceiptImage()" class="btn-blue">📸 ດາວໂຫຼດຮູບໃບເຊັດ ສົ່ງໃຫ້ລູກຄ້າ</button></div>
+        </section>
+    </div>
+    <footer><p>© 2026 100K ຊ່າງປະຈຳບ້ານ. All Rights Reserved.</p></footer>
+</body>
+</html>
