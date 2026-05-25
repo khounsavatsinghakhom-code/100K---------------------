@@ -1,8 +1,20 @@
+// app.js - ລະບົບຄິດໄລ່ເງິນ ແລະ ອອກໃບບິນແບບແຍກໂມດູນ
+window.onload = function() {
+    // ຕັ້ງຄ່າວັນທີປະຈຸບັນໃນຟອມ
+    const today = new Date().toISOString().split('T')[0];
+    if(document.getElementById('book-date')) {
+        document.getElementById('book-date').value = today;
+    }
+    // ໂຫຼດລາຍການບໍລິການຂຶ້ນໜ້າເວັບ
+    renderServices();
+};
+
 function renderServices() {
     let gridHtml = '';
     let selectHtml = '';
     let checkboxHtml = '';
     
+    // ລວມ 3 ໂມດູນງານທີ່ແຍກກັນ
     const ALL_MODULES = [AIR_SERVICES, ELECTRIC_SERVICES, PLUMBING_SERVICES];
     
     ALL_MODULES.forEach(category => {
@@ -14,7 +26,7 @@ function renderServices() {
             let name = (currentLang === "lo") ? item.name : item.en_name;
             let btnText = (currentLang === "lo") ? "📞 ທັກຫາຊ່າງ" : "📞 Contact";
             
-            // ປ່ຽນການສະແດງຜົນໃຫ້ມີປຸ່ມກົດແຍກລາຍການແບບ Fastwork
+            // ໂຊກ່ອງບໍລິການມີປຸ່ມກົດແບບ Fastwork
             gridHtml += `
                 <div class="service-item-row">
                     <div class="item-info">
@@ -38,9 +50,74 @@ function renderServices() {
     calculateTotal();
 }
 
-// 🚀 ຟັງຊັນພິເສດ: ກົດປຸ່ມແລ້ວເດັ້ງເຂົ້າ WhatsApp ພ້ອມຊື່ລາຍການບໍລິການທັນທີ
+// ກົດປຸ່ມແລ້ວເດັ້ງເຂົ້າ WhatsApp ພ້ອມຂໍ້ຄວາມອັດຕະໂນມັດ
 function directOrder(serviceName) {
-    const whatsappNumber = "85620XXXXXXXX"; // ⚠️ ປ່ຽນ XXXXXXXX ເປັນເບີ WhatsApp ຂອງເຈົ້າ
+    const whatsappNumber = "8562095551928"; // ⚠️ ສາມາດປ່ຽນເປັນເບີ WhatsApp ຂອງເຈົ້າໄດ້
     const text = `ສະບາຍດີ 100K ຊ່າງປະຈຳບ້ານ, ຂ້ອຍສົນໃຈບໍລິການ:\n👉 ${serviceName}\n\nກະລຸນາແນະນຳຄິວຊ່າງໃຫ້ແດ່ເດີ້.`;
     window.open(`https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function calculateTotal() {
+    let totalLabor = 0;
+    let itemsHtml = '';
+    
+    const checkboxes = document.querySelectorAll('.job-checkbox:checked');
+    checkboxes.forEach(cb => {
+        totalLabor += parseInt(cb.value);
+        itemsHtml += `<div class="receipt-row"><span>✔️ ${cb.getAttribute('data-name')}</span><span>${parseInt(cb.value).toLocaleString()} ກີບ</span></div>`;
+    });
+    
+    const spareCost = parseInt(document.getElementById('spare-cost').value) || 0;
+    const spareDetail = document.getElementById('spare-detail').value || 'ອະໄຫຼ່ເພີ່ມເຕີມ';
+    
+    if(spareCost > 0) {
+        itemsHtml += `<div class="receipt-row" style="color:#d32f2f;"><span>⚙️ ${spareDetail}</span><span>${spareCost.toLocaleString()} ກີບ</span></div>`;
+    }
+    
+    const finalTotal = totalLabor + spareCost;
+    document.getElementById('receipt-items').innerHTML = itemsHtml || '<div style="text-align:center; color:#999; padding:20px;">ບໍ່ມີລາຍການຖືກເລືອກ</div>';
+    document.getElementById('total-price-display').innerHTML = finalTotal.toLocaleString() + " ກີບ";
+}
+
+function updateReceiptData() {
+    document.getElementById('rec-name').innerText = document.getElementById('cust-name').value || '---------';
+    document.getElementById('rec-phone').innerText = document.getElementById('cust-phone').value || '---------';
+    
+    const today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    document.getElementById('rec-date').innerText = `${dd}/${mm}/${yyyy}`;
+}
+
+function checkStaffLogin() {
+    const pin = prompt("ກະລຸນາປ້ອນລະຫັດ PIN ຂອງຊ່າງເພື່ອເຂົ້າໃຊ້ງານ:");
+    if (pin === "100K2026") {
+        document.getElementById('staff-only-section').style.display = 'block';
+        document.getElementById('receipt').scrollIntoView({ behavior: 'smooth' });
+        updateReceiptData();
+    } else {
+        alert("ລະຫັດ PIN ບໍ່ຖືກຕ້ອງ! ສະເພາະທີມຊ່າງ 100K ເທົ່ານັ້ນ.");
+    }
+}
+
+function sendBooking() {
+    const service = document.getElementById('book-service').value;
+    const date = document.getElementById('book-date').value;
+    const time = document.getElementById('book-time').value;
+    
+    if(!date) { alert('ກະລຸນາເລືອກວັນທີ!'); return; }
+    
+    const text = `📅 ຂໍ້ຄວາມແຈ້ງຈອງຄິວຊ່າງລ່ວງໜ້າ:\n🛠 ບໍລິການ: ${service}\n📆 ວັນທີ: ${date}\n⏰ ຊ່ວງເວລາ: ${time}`;
+    window.open(`https://wa.me/8562095551928?text=${encodeURIComponent(text)}`, '_blank');
+}
+
+function downloadReceiptImage() {
+    const zone = document.getElementById('my-receipt-box');
+    html2canvas(zone, { scale: 2 }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = `100K-Receipt-${document.getElementById('cust-name').value || 'Customer'}.png`;
+        link.href = canvas.toDataURL();
+        link.click();
+    });
 }
