@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="lo">
+<html lang="la">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,10 +18,10 @@
 </head>
 <body>
     <header>
-        <div class="logo">100K <span>ช่างປະຈຳບ້ານ</span></div>
+        <div class="logo">100K <span>ຊ່າງປະຈຳບ້ານ</span></div>
         <div style="display: flex; align-items: center; gap: 15px;">
             <div style="background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 20px; font-size: 13px;">
-                <span onclick="switchLang('lo')" style="cursor:pointer; font-weight:bold; margin-right:5px;">🇱🇦 LA</span> | 
+                <span onclick="switchLang('la')" style="cursor:pointer; font-weight:bold; margin-right:5px;">🇱🇦 LA</span> | 
                 <span onclick="switchLang('en')" style="cursor:pointer; font-weight:bold; margin-left:5px;">🇬🇧 EN</span>
             </div>
             <button onclick="checkStaffLogin()" id="btn-staff-top" class="btn-orange">🧾 ອອກໃບເຊັດ (ສຳລັບຊ່າງ)</button>
@@ -32,9 +32,9 @@
         <div class="hero-text-container">
             <div style="background: rgba(255, 90, 0, 0.1); color: var(--accent-orange); display: inline-block; padding: 6px 16px; border-radius: 20px; margin-bottom: 25px; font-size: 13px; font-weight: 500;">📍 ໃຫ້ບໍລິການທົ່ວນະຄອນຫຼວງວຽງຈັນ</div>
             <h1 id="hero-title">ສູນລວມຊ່າງມືອາຊີບ<br>ໃກ້ບ້ານທ່ານ</h1>
-            <p id="hero-sub">ເອີ້ນຊ່າງກວດເຊັກທຸກອາການ ເລີ່ມຕົ້ນພຽງ 100,000 ກີບ! ໂປ່ງໃສ ບໍ່ຟັນລາຄາ ໝັ້ນໃຈໄດ້ 100%</p>
+            <p id="hero-desc">ເອີ້ນຊ່າງກວດເຊັກທຸກອາການ ເລີ່ມຕົ້ນພຽງ 100,000 ກີບ! ໂປ່ງໃສ ບໍ່ຟັນລາຄາ ໝັ້ນໃຈໄດ້ 100%</p>
             <div class="btn-container">
-                <a href="#booking" id="btn-book-nav" class="btn-orange">📅 ເລືອກເວລານັດໝາຍ</a>
+                <a href="#booking" id="btn-book" class="btn-orange">📅 ເລືອກເວລານັດໝາຍ</a>
                 <button onclick="checkStaffLogin()" id="btn-receipt-nav" class="btn-outline">🧾 ໃບສະຫຼຸບງານຊ່າງ</button>
             </div>
         </div>
@@ -73,7 +73,7 @@
             <div style="max-width: 450px; margin: 0 auto; text-align: left; background: rgba(255,255,255,0.03); padding: 25px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.05);">
                 <h4 style="color: var(--accent-orange); margin-top: 0; font-weight: 500;">1. Customer Info / ຂໍ້ມູນລູກຄ້າ:</h4>
                 <div style="margin-bottom: 15px;"><label>Customer Name / ຊື່ລູກຄ້າ:</label><input type="text" id="cust-name" placeholder="Name" oninput="updateReceiptData()"></div>
-                <div style="margin-bottom: 15px;"><label>Phone Number / ເບີໂທ:</label><input type="text" id="cust-phone" placeholder="Phone" oninput="updateReceiptData()"></div>
+                <div style="margin-bottom: 15px;"><label>Phone Number / ເບີໂ通:</label><input type="text" id="cust-phone" placeholder="Phone" oninput="updateReceiptData()"></div>
                 <h4 style="color: var(--accent-orange); margin-top: 25px; font-weight: 500;">2. Select Services / ເລືອກລາຍການ:</h4>
                 <div id="receipt-checkboxes-zone" style="max-height: 300px; overflow-y: auto; background: white; padding: 15px; border-radius: 10px;"></div>
                 <h4 style="color: var(--accent-orange); margin-top: 25px; font-weight: 500;">3. Spare Parts / ຄ່າອະໄຫຼ່:</h4>
@@ -94,7 +94,7 @@
                     </div>
                     <div id="receipt-items"></div>
                     <div class="receipt-total"><span>Total / ລວມ:</span><span id="total-price-display">0 ກີບ</span></div>
-                    <div style="margin-top: 18px; font-size: 11px; color: #6d4c41; background: #fffde7; padding: 10px; border-radius: 6px; border: 1px solid #fff59d;">🛡️ <strong>Warranty / ການຮັບປະກັນ:</strong> 15 Days Satisfaction Warranty / ຮັບປະກັນ 15 ວັນ.</div>
+                    <div style="margin-top: 18px; font-size: 11px; color: #6d4c41; background: #fffde7; padding: 10px; border-radius: 6px; border: 1px solid #fff59d;">🛡️ <strong>Warranty / ການຮັບປະກັນ:</strong> 15 Days Satisfaction Warranty / รับประกัน 15 ວັນ.</div>
                     <div class="qr-container" style="text-align:center; margin-top:15px;"><div style="font-weight: 500; font-size: 13px; color: #333; margin-bottom: 6px;">📱 Scan to Pay via BCEL One</div><img class="qr-image" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=100K_HOME_CHANG_VIENTIANE" alt="BCEL QR" style="width:150px; height:150px;"></div>
                 </div>
             </div>
